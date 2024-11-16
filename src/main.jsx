@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Treatments from './pages/Treatments';
 import MyAppointments from './pages/MyAppointments';
 import Profile from './pages/Profile';
+import ServiceDetails from './pages/serviceDetails';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,17 @@ const router = createBrowserRouter([
 
                 return {serviceData, feedbackData}
               },
+          },
+          {
+            path: "/details/:id",
+            element: <ServiceDetails></ServiceDetails>,
+            loader: async ({params})=> {
+              const res = await fetch("/service.json")
+              const data = await res.json()
+              const perData = data.find(single => single.id == params.id)
+
+              return perData;
+            }
           },
           {
               path: "/treatments",

@@ -39,7 +39,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <h2 className="md:text-2xl text-sm font-bold uppercase md:mr-0 mr-2">Dentist Hub</h2>
+      <h2 className="md:text-2xl text-sm font-bold uppercase">Dentist Hub</h2>
       
       <div className="hidden md:flex font-bold">
           <NavLink to="/">Home</NavLink>
