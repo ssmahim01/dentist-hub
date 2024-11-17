@@ -20,7 +20,7 @@ const Home = () => {
             </div>
 
             <button className="btn bg-info text-white font-bold px-8 block mx-auto my-8">
-                <NavLink to="treatments">Show More</NavLink>
+                <NavLink to="/treatments">Show More</NavLink>
             </button>
 
             <div className="mt-16">
