@@ -11,6 +11,9 @@ import ServiceDetails from "./pages/serviceDetails";
 import AuthProvider from "./Providers/AuthProvider";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
   {
@@ -32,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <ServiceDetails></ServiceDetails>,
+        element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>,
         loader: async ({ params }) => {
           const res = await fetch("/service.json");
           const data = await res.json();
@@ -48,11 +51,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/myAppointments",
-        element: <MyAppointments></MyAppointments>,
+        element: <PrivateRoute><MyAppointments></MyAppointments></PrivateRoute>,
       },
       {
         path: "/profile",
-        element: <Profile></Profile>,
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>,
       },
       {
         path: "/login",
@@ -71,5 +74,6 @@ createRoot(document.getElementById("root")).render(
     <AuthProvider>
       <RouterProvider router={router}></RouterProvider>
     </AuthProvider>
+    <ToastContainer></ToastContainer>
   </StrictMode>
 );

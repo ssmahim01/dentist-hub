@@ -6,7 +6,7 @@ import FeedBack from "../components/FeedBack";
 const Home = () => {
     const services = useLoaderData();
     const {serviceData, feedbackData} = services;
-    console.log(serviceData, feedbackData);
+    // console.log(serviceData, feedbackData);
 
     return (
         <div className="w-11/12 mx-auto">

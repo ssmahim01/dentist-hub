@@ -3,7 +3,7 @@ import AppointmentsCard from "../components/AppointmentsCard";
 
 const MyAppointments = () => {
   const [localSavedData, setLocalSavedData] = useState([]);
-  console.log(localSavedData);
+  // console.log(localSavedData);
 
   useEffect(() => {
     const localData = localStorage.getItem("appointments");

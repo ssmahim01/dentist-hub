@@ -1,5 +1,5 @@
 const AppointmentsCard = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <div className="p-6 bg-base-100 border border-gray-300 shadow-md rounded-2xl space-y-4">
       <h2 className="md:text-xl text-lg font-bold">

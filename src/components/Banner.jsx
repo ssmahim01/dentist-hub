@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import BannerImg from "../assets/banner.png";
 
 const Banner = () => {
@@ -14,7 +15,7 @@ const Banner = () => {
           <p className="text-gray-500 lg:text-base text-sm font-medium">
             Teeth is valuable thing in our body. We should care about our teeth. When any patient has broken teeth then the dentist can fix it.So, we do not hesitate to go dentist center.
           </p>
-          <button className="btn px-6 text-white font-bold btn-info uppercase">Book Now</button>
+          <button className="btn px-6 text-white font-bold btn-info uppercase"><Link to="/treatments">Book Now</Link></button>
         </div>
       </div>
     </div>

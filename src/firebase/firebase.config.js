@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBAiIxNuNjh8bW5EkVmmw8pY2M-iHNPQ6Y",
-  authDomain: "dentist-hub-c64df.firebaseapp.com",
-  projectId: "dentist-hub-c64df",
-  storageBucket: "dentist-hub-c64df.firebasestorage.app",
-  messagingSenderId: "515174677087",
-  appId: "1:515174677087:web:608a40ed69a71a5c8df9ea"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase

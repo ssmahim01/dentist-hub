@@ -4,7 +4,7 @@ const FeedBack = ({ feedbackData }) => {
   return (
     <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8 my-14">
       {feedbackData.map((feedback) => (
-        <div className="card bg-base-100 shadow-lg space-y-5 p-4">
+        <div key={feedback.reviewId} className="card bg-base-100 shadow-lg space-y-5 p-4">
           <div className="flex justify-between items-center">
             <figure>
               <img

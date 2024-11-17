@@ -1,27 +1,41 @@
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useContext } from "react";
+import auth from "../firebase/firebase.config";
+import { toast } from "react-toastify";
 
 const Register = () => {
-    const {registerUser, setUser} = useContext(AuthContext);
+    const {registerUser, setUser, updateUserInfo, logOutUser} = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleRegister = (e) => {
         e.preventDefault();
 
+        const name = e.target.name.value;
+        const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
+
+        if(name.length < 6 || password.length < 6){
+         return toast.error("Please provide six character or long", {
+          position: "top-center"
+         });
+        };
 
         registerUser(email, password)
         .then(result => {
             const user = result.user;
             setUser(user);
-            console.log(user);
-            navigate("/");
+            // console.log(user);
+            logOutUser(auth);
+            updateUserInfo({displayName:name, photoURL:photo})
+            .then(() => {
+              navigate("/login")
+            })
         })
         .catch(err => {
             const errorMessage = err.message;
-            console.log(errorMessage);
+            // console.log(errorMessage);
         })
     };
 

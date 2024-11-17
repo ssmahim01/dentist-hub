@@ -1,9 +1,13 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
-    const {loginWithEmailPass, setUser} = useContext(AuthContext);
+    const {loginWithEmailPass, setUser, resetPassword} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const emailRef = useRef();
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -15,12 +19,27 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             setUser(user);
-            console.log(user);
+            e.target.reset();
+            // console.log(user);
+            navigate(location?.state ? location.state : "/")
         })
         .catch(err => {
             const errorMessage = err.message;
-            console.log(errorMessage);
+             return toast.error("Found error, Please try again", {
+              position: "top-center"
+             });
         })
+    };
+
+    const handleForgetPassword = () => {
+      const emailInput = emailRef.current.value;
+
+      if(emailInput){
+        resetPassword(emailInput)
+        .then(() => {
+          // console.log("user reset email sent");
+        })
+      }
     };
 
   return (
@@ -36,6 +55,7 @@ const Login = () => {
           <input
             type="email"
             placeholder="email"
+            ref={emailRef}
             name="email"
             className="input input-bordered"
             required
@@ -53,7 +73,7 @@ const Login = () => {
             required
           />
           <label className="label">
-            <a className="label-text-alt link link-hover font-semibold">
+            <a onClick={handleForgetPassword} className="label-text-alt link link-hover font-semibold">
               Forgot password?
             </a>
           </label>
