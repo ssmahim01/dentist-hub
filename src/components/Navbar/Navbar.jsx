@@ -3,7 +3,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   return (
-    <div className="navbar flex justify-between items-center min-h-20 text-white mb-4 px-6 bg-purple-500">
+    <div className="navbar flex justify-between items-center min-h-20 mb-4 px-6 bg-base-200">
       <div className="navbar-start block md:hidden">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
